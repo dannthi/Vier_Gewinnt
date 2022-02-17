@@ -93,7 +93,7 @@ bool check(){
             else if((board[i][j] == board [i+1][j+1]) && (board [i+1][j+1] == board [i+2][j+2]) && (board [i+2][j+2] == board [i+3][j+3]) && (board [i][j] != ' ')){
                 return true;
             } 
-            else if((board[i][j] == board [i-1][j-1]) && (board [i-1][j-1] == board [i-2][j-2]) && (board [i-2][j-2] == board [i-3][j-3]) && (board [i][j] != ' ')){
+            else if((board[i][j] == board [i-1][j+1]) && (board [i-1][j+1] == board [i-2][j+2]) && (board [i-2][j+2] == board [i-3][j+3]) && (board [i][j] != ' ')){
                 return true;
             }
         }   
