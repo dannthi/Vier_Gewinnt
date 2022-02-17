@@ -1,9 +1,5 @@
-#define _CRT_SECURE_NO_DEPRECATE
 #include <stdio.h>
-#include <stdlib.h>
 #include <iostream>
-#define WIDTH 7
-#define HEIGHT 6
 #include "Header.h"
 
 
@@ -24,6 +20,7 @@ int main(){
             return 0;
         }
         
+
         turn++;
         if(turn % 2 == 0){
             player = 2;

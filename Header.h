@@ -1,10 +1,8 @@
-#define _CRT_SECURE_NO_DEPRECATE
 #include <stdio.h>
-#include <stdlib.h>
 #include <iostream>
-#define WIDTH 7
-#define HEIGHT 6
 
+const int WIDTH = 7;
+const int HEIGHT = 6;
 char board[HEIGHT][WIDTH];
 
 //Spaces in every index
@@ -64,10 +62,42 @@ void set_move(int position, int player){
     }
 }
 
-bool check(){
-    if(true)
-    return false;
+//checks if board[0][i] are all not ' '
+bool draw(int i){
+    i++;
+    if(i-1 == WIDTH){
+        return true;
+    }
+    else if(i != ' '){
+        draw(i);
+    }
+    else{
+        return false;
+    }
+}
 
-    else
-    return true;
+//look for similars of every index, to the right, top, righttop, leftbottom
+bool check(){
+    for(int i = 0; i < WIDTH; i++){
+        for(int j = 0; j < HEIGHT; j++){
+
+            if(draw(0)){
+                std::cout << "Draw!" << std::endl;
+                exit(0);
+            }
+            else if((board[i][j] == board [i+1][j]) && (board[i][j] == board [i+2][j]) && (board[i][j] == board [i+3][j]) && (board[i][j] != ' ')){
+                return true;
+            } 
+            else if((board [i][j] == board[i][j+1]) && (board[i][j] == board[i][j+2]) && (board[i][j] == board[i][j+3]) && (board[i][j] != ' ')){
+                return true;
+            }
+            else if((board[i][j] == board[i+1][j+1]) && (board[i][j] == board[i+2][j+2]) && (board[i][j] == board[i+3][j+3]) && (board[i][j] != ' ')){
+                return true;
+            } 
+            else if((board[i][j] == board[i-1][j-1]) && (board[i][j] == board[i-2][j-2]) && (board[i][j] == board[i-3][j-3]) && (board[i][j] != ' ')){
+                return true;
+            }
+            else return false;
+        }   
+    }
 }
