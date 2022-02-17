@@ -68,7 +68,7 @@ bool draw(int i){
     if(i-1 == WIDTH){
         return true;
     }
-    else if(i != ' '){
+    else if(board[0][i-1] != ' '){
         draw(i);
     }
     else{
@@ -78,26 +78,25 @@ bool draw(int i){
 
 //look for similars of every index, to the right, top, righttop, leftbottom
 bool check(){
-    for(int i = 0; i < WIDTH; i++){
-        for(int j = 0; j < HEIGHT; j++){
-
-            if(draw(0)){
+    if(draw(0)){
                 std::cout << "Draw!" << std::endl;
                 exit(0);
             }
-            else if((board[i][j] == board [i+1][j]) && (board[i][j] == board [i+2][j]) && (board[i][j] == board [i+3][j]) && (board[i][j] != ' ')){
+    for(int i = 0; i < HEIGHT; i++){
+        for(int j = 0; j < WIDTH; j++){
+            if((board[i][j] == board [i+1][j]) && (board [i+1][j] == board [i+2][j]) && (board [i+2][j] == board [i+3][j]) && (board [i][j] != ' ')){
                 return true;
             } 
-            else if((board [i][j] == board[i][j+1]) && (board[i][j] == board[i][j+2]) && (board[i][j] == board[i][j+3]) && (board[i][j] != ' ')){
+            else if((board[i][j] == board [i][j+1]) && (board [i][j+1] == board [i][j+2]) && (board [i][j+2] == board [i][j+3]) && (board [i][j] != ' ')){
                 return true;
             }
-            else if((board[i][j] == board[i+1][j+1]) && (board[i][j] == board[i+2][j+2]) && (board[i][j] == board[i+3][j+3]) && (board[i][j] != ' ')){
+            else if((board[i][j] == board [i+1][j+1]) && (board [i+1][j+1] == board [i+2][j+2]) && (board [i+2][j+2] == board [i+3][j+3]) && (board [i][j] != ' ')){
                 return true;
             } 
-            else if((board[i][j] == board[i-1][j-1]) && (board[i][j] == board[i-2][j-2]) && (board[i][j] == board[i-3][j-3]) && (board[i][j] != ' ')){
+            else if((board[i][j] == board [i-1][j-1]) && (board [i-1][j-1] == board [i-2][j-2]) && (board [i-2][j-2] == board [i-3][j-3]) && (board [i][j] != ' ')){
                 return true;
             }
-            else return false;
         }   
     }
+    return false;
 }

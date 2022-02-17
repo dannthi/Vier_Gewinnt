@@ -2,7 +2,6 @@
 #include <iostream>
 #include "Header.h"
 
-
 int main(){
     define_board();
     int player = 1;
@@ -12,11 +11,11 @@ int main(){
         std::cout << "Turn " << turn << std::endl;
 
         print_board();
-        
         set_move(get_move(player), player);
 
         if(check()){
             std::cout << "Player " << player << " wins!" << std::endl;
+            print_board();
             return 0;
         }
         
